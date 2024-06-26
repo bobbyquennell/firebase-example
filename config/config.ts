@@ -5,9 +5,9 @@ const ConfigSchema = Yup.object<NodeJS.ProcessEnv>()
   .noUnknown(false)
   .shape({
     APP_ENV: Yup.string()
-      .oneOf(['test', 'staging', 'production'])
+      .oneOf(['dev', 'staging', 'prod'])
       .required()
-      .default('test'),
+      .default('dev'),
     PORTFOLIO: Yup.string().required(),
     CDK_DEPLOY_ACCOUNT: Yup.string().required(),
     CDK_DEPLOY_REGION: Yup.string().required(),

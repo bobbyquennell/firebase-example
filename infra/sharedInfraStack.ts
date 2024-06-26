@@ -5,7 +5,7 @@ import * as targets from 'aws-cdk-lib/aws-events-targets';
 import { StackProps } from 'aws-cdk-lib';
 
 export interface SharedInfraStackProps extends StackProps {
-  appEnv: 'test' | 'staging' | 'production';
+  appEnv: 'dev' | 'staging' | 'prod';
   busName: string;
 }
 export class SharedInfraStack extends cdk.Stack {
@@ -27,7 +27,7 @@ export class SharedInfraStack extends cdk.Stack {
       {
         logGroupName: `${busName}-audit-log-group-${appEnv}`,
         retention:
-          appEnv === 'production'
+          appEnv === 'prod'
             ? RetentionDays.SIX_MONTHS
             : RetentionDays.THREE_MONTHS,
         removalPolicy: cdk.RemovalPolicy.DESTROY,
